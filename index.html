@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)file:///C:/Users/gabri/Downloads/gemini-code-1781962795639.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Mar y Tierra Inteligente - El Rincón del Sabor</title>
+    <style>
+        /* ==========================================================================
+           DISEÑO VISUAL (CSS)
+           ========================================================================== */
+        :root {
+            --color-principal: #d35400; /* Terracota */
+            --color-secundario: #27ae60; /* Verde Plátano */
+            --color-oscuro: #2c3e50;
+            --color-claro: #fdfefe;
+            --color-fondo-oscuro: rgba(0, 0, 0, 0.65);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-fondo-oscuro);
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(211, 84, 0, 0.95);
+            color: var(--color-claro);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            margin: 0.5rem 0 0 0;
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.2rem;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .action-zone {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        #btn-generar {
+            background-color: var(--color-secundario);
+            color: var(--color-claro);
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        #btn-generar:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.7);
+            background-color: #219653;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.6s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            min-height: 420px;
+            border-top: 6px solid var(--color-principal);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            background-color: #eaecee;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card.placeholder {
+            border: 3px dashed #bdc3c7;
+            background: rgba(255, 255, 255, 0.1);
+            height: 350px;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .card.placeholder h3 { color: #fff; opacity: 0.7; }
+        .card.placeholder p { color: #fff; font-size: 2rem; }
+
+        .card h3 {
+            margin-top: 0;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card .nombre-plato {
+            color: var(--color-oscuro);
+            font-size: 1.4rem;
+            margin: 0 0 1rem 0;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+
+        .tag-plato {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            align-self: center;
+            background-color: #fbeee6; 
+            color: var(--color-principal);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--color-oscuro);
+            color: var(--color-claro);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>El Rincón del Sabor</h1>
+        <p class="subtitle">Menú Mar y Tierra Inteligente 🇵🇷</p>
+    </header>
+
+    <main>
+        <section class="action-zone">
+            <button id="btn-generar">🎲 Generar Sugerencias con Fotos Reales</button>
+        </section>
+
+        <section id="menu-container" class="menu-grid"><div class="card">
+                    <div class="card-image" style="background-image: url(&#39;https://loremflickr.com/500/350/food,seafood-paella/all&#39;);"></div>
+                    <div class="card-content">
+                        <h3>Sugerencia 01</h3>
+                        <p class="nombre-plato">Paella criolla con mariscos</p>
+                        <span class="tag-plato">Festín Boricua</span>
+                    </div>
+                </div><div class="card">
+                    <div class="card-image" style="background-image: url(&#39;https://loremflickr.com/500/350/food,conch-salad/all&#39;);"></div>
+                    <div class="card-content">
+                        <h3>Sugerencia 02</h3>
+                        <p class="nombre-plato">Ensalada de carrucho</p>
+                        <span class="tag-plato">Delicia de la Costa</span>
+                    </div>
+                </div><div class="card">
+                    <div class="card-image" style="background-image: url(&#39;https://loremflickr.com/500/350/food,rice-beans-avocado/all&#39;);"></div>
+                    <div class="card-content">
+                        <h3>Sugerencia 03</h3>
+                        <p class="nombre-plato">Habichuelas guisadas con arroz y aguacate</p>
+                        <span class="tag-plato">El Diario Perfecto</span>
+                    </div>
+                </div></section>
+    </main>
+
+    <footer>
+        <p>© 2026 El Rincón del Sabor - Fotografías Inteligentes Automatizadas</p>
+    </footer>
+
+    <script>
+        // ==========================================================================
+        // BASE DE DATOS COMPLETA (40 RECETAS) CON PALABRAS CLAVE PARA BUSCAR LA FOTO
+        // ==========================================================================
+        const recetasPuertoRico = [
+            // --- TIERRA Y TRADICIONALES (20) ---
+            { nombre: "Arroz con gandules y pernil", tipo: "Clásico Navideño", busqueda: "roasted-pork" },
+            { nombre: "Mofongo relleno de camarones", tipo: "Especialidad Culinaria", busqueda: "shrimp-mofongo" },
+            { nombre: "Pollo guisado con arroz blanco", tipo: "Sabor Casero", busqueda: "chicken-stew" },
+            { nombre: "Asopao de pollo", tipo: "Para el Alma", busqueda: "chicken-soup-rice" },
+            { nombre: "Bistec encebollado", tipo: "Plato Fuerte Criollo", busqueda: "steak-onions" },
+            { nombre: "Chuletas fritas con arroz y habichuelas", tipo: "Preferido de la Casa", busqueda: "pork-chops" },
+            { nombre: "Carne guisada puertorriqueña", tipo: "A Fuego Lento", busqueda: "beef-stew" },
+            { nombre: "Pastelón de amarillos", tipo: "Dulce y Salado", busqueda: "plantain-lasagna" },
+            { nombre: "Arroz mamposteao", tipo: "Acompañamiento Estrella", busqueda: "rice-beans" },
+            { nombre: "Bacalao guisado con viandas", tipo: "Delicia Auténtica", busqueda: "codfish" },
+            { nombre: "Sancocho puertorriqueño", tipo: "El Levanta Muertos", busqueda: "meat-stew-soup" },
+            { nombre: "Pollo al horno adobado", tipo: "Sabor del Campo", busqueda: "roasted-chicken" },
+            { nombre: "Mofongo con carne frita", tipo: "El Rey del Sabor", busqueda: "fried-pork-mofongo" },
+            { nombre: "Arroz con pollo", tipo: "Tradición Familiar", busqueda: "chicken-rice" },
+            { nombre: "Chillo frito con tostones", tipo: "Frescura Costera", busqueda: "fried-fish" },
+            { nombre: "Rellenos de papa", tipo: "Fritura Criolla", busqueda: "potato-croquette" },
+            { nombre: "Alcapurrias con ensalada", tipo: "Sabor de Piñones", busqueda: "fritter" },
+            { nombre: "Pechuga de pollo en salsa criolla", tipo: "Ligero y Sabroso", busqueda: "chicken-breast" },
+            { nombre: "Habichuelas guisadas con arroz y aguacate", tipo: "El Diario Perfecto", busqueda: "rice-beans-avocado" },
+            { nombre: "Carne frita con tostones y mayoketchup", tipo: "El Indiscutible", busqueda: "fried-pork" },
+
+            // --- DE LAS COSTAS / MAR (20) ---
+            { nombre: "Ensalada de carrucho", tipo: "Delicia de la Costa", busqueda: "conch-salad" },
+            { nombre: "Ensalada de pulpo a la criolla", tipo: "Frescura Marina", busqueda: "octopus-salad" },
+            { nombre: "Arepas de coco rellenas de carrucho", tipo: "Joyas de Fajardo", busqueda: "flatbread-seafood" },
+            { nombre: "Asopao de mariscos (7 potencias)", tipo: "Poder del Mar", busqueda: "seafood-soup" },
+            { nombre: "Serenata de bacalao", tipo: "Saludable Boricua", busqueda: "codfish-salad" },
+            { nombre: "Camarones al ajillo con tostones", tipo: "El Más Pedido", busqueda: "garlic-shrimp" },
+            { nombre: "Mofongo relleno de carrucho", tipo: "Manjar de Pescadores", busqueda: "seafood-mofongo" },
+            { nombre: "Chillo a la Santa Bárbara", tipo: "Salsa Criolla Intensa", busqueda: "fish-creole-sauce" },
+            { nombre: "Filete de rodaballo en salsa de alcaparras", tipo: "Toque Elegante", busqueda: "fish-fillet" },
+            { nombre: "Salmorejo de jueyes con arepas", tipo: "Auténtico de Loíza", busqueda: "crab-stew" },
+            { nombre: "Paella criolla con mariscos", tipo: "Festín Boricua", busqueda: "seafood-paella" },
+            { nombre: "Caldo santo", tipo: "Herencia Africana", busqueda: "fish-coconut-soup" },
+            { nombre: "Empanadillas de cetí", tipo: "Manjar de Arecibo", busqueda: "fish-empanada" },
+            { nombre: "Sierra en escabeche con viandas", tipo: "Tradición Criolla", busqueda: "fish-escabeche" },
+            { nombre: "Tacos de pescado local con mayo-chipotle", tipo: "Estilo Playero", busqueda: "fish-tacos" },
+            { nombre: "Bolas de mofongo en caldo de mariscos", tipo: "Fusión Perfecta", busqueda: "seafood-broth" },
+            { nombre: "Camarones en salsa criolla sobre mamposteao", tipo: "Combinación Suprema", busqueda: "shrimp-sauce" },
+            { nombre: "Croquetas de jaiba caseras", tipo: "Para Empezar", busqueda: "crab-cakes" },
+            { nombre: "Pescado entero frito al mojo isleño", tipo: "Directo de la Pescadería", busqueda: "whole-fried-fish" },
+            { nombre: "Langosta a la mantequilla de ajo", tipo: "Plato Premium", busqueda: "lobster-garlic" }
+        ];
+
+        const botonGenerar = document.getElementById('btn-generar');
+        const contenedorMenu = document.getElementById('menu-container');
+
+        function generarMenuDelDia() {
+            let platosDisponibles = [...recetasPuertoRico];
+            let seleccionados = [];
+
+            // Selección aleatoria de 3 platos sin repetir
+            for (let i = 0; i < 3; i++) {
+                const indiceAleatorio = Math.floor(Math.random() * platosDisponibles.length);
+                const platoElegido = platosDisponibles.splice(indiceAleatorio, 1)[0];
+                seleccionados.push(platoElegido);
+            }
+
+            contenedorMenu.innerHTML = '';
+
+            // Renderizado de las tarjetas con búsqueda inteligente de imágenes
+            seleccionados.forEach((plato, index) => {
+                const tarjeta = document.createElement('div');
+                tarjeta.classList.add('card');
+                
+                // Generamos una URL única para buscar la foto exacta en base al plato
+                // Agregamos un número aleatorio al final para evitar que repita la misma foto exacta si sale dos veces
+                const fotoInteligente = `https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80&sig=${Math.random()}&txt=${plato.busqueda}`;
+                
+                // Usando un motor de renderizado de comida directo por palabras clave
+                const urlImagenReal = `https://source.unsplash.com/500x350/?food,${plato.busqueda}`;
+
+                // Para garantizar estabilidad y rapidez extrema, usamos fotos de comida optimizadas por tags:
+                const fotoFinal = `https://loremflickr.com/500/350/food,${plato.busqueda}/all`;
+
+                tarjeta.innerHTML = `
+                    <div class="card-image" style="background-image: url('${fotoFinal}');"></div>
+                    <div class="card-content">
+                        <h3>Sugerencia 0${index + 1}</h3>
+                        <p class="nombre-plato">${plato.nombre}</p>
+                        <span class="tag-plato">${plato.tipo}</span>
+                    </div>
+                `;
+                
+                contenedorMenu.appendChild(tarjeta);
+            });
+        }
+
+        botonGenerar.addEventListener('click', generarMenuDelDia);
+    </script>
+
+</body></html>
